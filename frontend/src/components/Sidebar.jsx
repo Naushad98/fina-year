@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
-const Sidebar = ({ activeTab, setActiveTab, darkMode, setDarkMode }) => {
+const Sidebar = ({ activeTab, setActiveTab, darkMode, setDarkMode, isOpen, onClose }) => {
   const { user, logout } = useAuth();
 
   const menuItems = [
@@ -26,7 +26,9 @@ const Sidebar = ({ activeTab, setActiveTab, darkMode, setDarkMode }) => {
   ];
 
   return (
-    <aside className="w-64 bg-card border-r border-border h-screen flex flex-col justify-between transition-colors duration-300">
+    <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-card border-r border-border h-screen flex flex-col justify-between transition-all duration-300 lg:static lg:translate-x-0 ${
+      isOpen ? 'translate-x-0' : '-translate-x-full'
+    }`}>
       <div>
         {/* Brand Header */}
         <div className="p-6 border-b border-border flex items-center gap-3">
@@ -47,7 +49,10 @@ const Sidebar = ({ activeTab, setActiveTab, darkMode, setDarkMode }) => {
             return (
               <button
                 key={item.id}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  if (onClose) onClose();
+                }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                   isActive 
                     ? 'bg-primary text-primary-foreground shadow-md shadow-primary/10 dark:shadow-none' 

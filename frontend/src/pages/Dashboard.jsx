@@ -304,7 +304,7 @@ const Dashboard = ({ setActiveTab }) => {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm border-collapse">
+            <table className="w-full min-w-[600px] text-left text-sm border-collapse">
               <thead>
                 <tr className="border-b border-border text-muted-foreground text-xs font-semibold">
                   <th className="pb-3 font-medium">Date</th>
