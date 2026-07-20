@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const { run, get, query } = require('../db');
 const { verifyToken, JWT_SECRET } = require('../middleware/auth');
+const { sendMail } = require('../services/mailer');
 
 const router = express.Router();
 const REFRESH_SECRET = 'fraudshield_refresh_secret_token_202_dev';
@@ -83,6 +84,23 @@ router.post('/login', async (req, res) => {
     const expires = Date.now() + 5 * 60 * 1000; // 5 minutes expiration
 
     otpSessions.set(tempToken, { userId: user.id, otp, expires });
+
+    // Send OTP to user email via SMTP
+    sendMail(
+      user.email,
+      'FraudShield: Two-Factor Verification Code',
+      `Hello,
+
+Someone is attempting to log in to your FraudShield account.
+
+Your 6-digit One-Time Verification Code is:
+>>> ${otp} <<<
+
+This code is valid for 5 minutes. If you did not initiate this login attempt, please secure your account credentials immediately.
+
+Best regards,
+FraudShield Support Team`
+    ).catch(err => console.error('Failed to send OTP email:', err));
 
     // Print OTP to Node.js console for easy testing/demo
     console.log('\n======================================');

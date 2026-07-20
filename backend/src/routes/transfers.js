@@ -2,6 +2,7 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const { run, get, query } = require('../db');
 const { verifyToken } = require('../middleware/auth');
+const { sendMail } = require('../services/mailer');
 
 const router = express.Router();
 const ML_ENGINE_URL = process.env.ML_ENGINE_URL || 'http://localhost:8000';
@@ -181,6 +182,32 @@ router.post('/', verifyToken, async (req, res) => {
        VALUES (?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?)`,
       [txnId, fromAccountId, now.split(' ')[0], desc, amt, 'debit', 'Transfer', status, risk.risk_score, risk.is_anomaly, risk.reasons.join(', ')]
     );
+
+    // If High or Medium risk, trigger an automated security alert email
+    if (risk.risk_level === 'High' || risk.risk_level === 'Medium') {
+      sendMail(
+        req.user.email,
+        `[SECURITY WARNING] Elevated Transaction Risk Flagged`,
+        `Hello,
+
+This is an automated security alert from FraudShield.
+
+A money transfer from your account has been flagged with ${risk.risk_level} Risk (Score: ${risk.risk_score}%).
+
+Transaction Details:
+- Date: ${now}
+- Destination: ${toAccountName} (A/C: ${toAccountNumber})
+- Amount: $${amt}
+- Risk Level: ${risk.risk_level}
+- Risk Reasons: ${risk.reasons.join(', ')}
+- Status: ${status}
+
+If you did not authorize this action, please access your dashboard security settings immediately to lock your account credentials.
+
+Best regards,
+FraudShield Security Team`
+      ).catch(err => console.error('Failed to send security alert email:', err));
+    }
 
     res.json({
       message: 'Transfer completed successfully.',
