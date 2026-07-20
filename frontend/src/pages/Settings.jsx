@@ -309,7 +309,7 @@ const Settings = () => {
                 </div>
 
                 {/* Explainable description text */}
-                <div className="p-3 bg-secondary/10 border border-secondary/20 rounded-xl text-[10px] text-secondary-foreground leading-relaxed">
+                <div className="p-3 bg-emerald-950/30 border border-emerald-500/20 rounded-xl text-[10px] text-emerald-300 leading-relaxed">
                   <span className="font-bold block mb-1">Architecture Details:</span>
                   The engine combines Isolation Forest outlier analysis (for zero-day anomalies) with an optimized Random Forest classifier (for known pattern matching). Model weights auto-adjust on user feedback confirms/dismisses.
                 </div>
