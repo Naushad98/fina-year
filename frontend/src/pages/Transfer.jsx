@@ -177,7 +177,7 @@ const Transfer = () => {
   };
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(val);
   };
 
   return (
@@ -279,7 +279,7 @@ const Transfer = () => {
 
             {/* Amount */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">Transfer Amount ($)</label>
+              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">Transfer Amount (₹)</label>
               <input 
                 type="number" 
                 placeholder="0.00" 

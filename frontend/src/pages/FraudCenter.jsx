@@ -133,7 +133,7 @@ const FraudCenter = () => {
   const handleExportCSV = () => {
     if (flaggedTransactions.length === 0) return;
     
-    const headers = ['Date', 'Bank', 'Account (Masked)', 'Description', 'Amount ($)', 'Category', 'Risk Score (%)', 'Reasons'];
+    const headers = ['Date', 'Bank', 'Account (Masked)', 'Description', 'Amount (₹)', 'Category', 'Risk Score (%)', 'Reasons'];
     
     const rows = flaggedTransactions.map(t => [
       t.date.split(' ')[0],
@@ -159,7 +159,7 @@ const FraudCenter = () => {
   };
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(val);
   };
 
   const getRiskBadgeColor = (score) => {

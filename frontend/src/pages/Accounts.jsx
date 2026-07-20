@@ -120,7 +120,7 @@ const Accounts = () => {
   };
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(val);
   };
 
   return (
@@ -349,7 +349,7 @@ const Accounts = () => {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">Initial Balance ($)</label>
+              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wide">Initial Balance (₹)</label>
               <input 
                 type="number" 
                 placeholder="e.g. 5000" 

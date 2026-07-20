@@ -93,7 +93,7 @@ const Dashboard = ({ setActiveTab }) => {
   };
 
   const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(val);
   };
 
   return (
@@ -221,7 +221,7 @@ const Dashboard = ({ setActiveTab }) => {
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(200,200,200,0.15)"/>
                 <XAxis dataKey="date" stroke="currentColor" className="text-muted-foreground text-[10px]" tickLine={false}/>
-                <YAxis stroke="currentColor" className="text-muted-foreground text-[10px]" tickLine={false} tickFormatter={(v) => `$${v}`}/>
+                <YAxis stroke="currentColor" className="text-muted-foreground text-[10px]" tickLine={false} tickFormatter={(v) => `₹${v}`}/>
                 <Tooltip 
                   formatter={(value) => [formatCurrency(value), 'Balance']}
                   contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '12px' }}
