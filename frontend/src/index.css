@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 215 90% 30%; /* Deep Blue */
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 175 75% 40%; /* Teal Accent */
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 210 40% 92%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 43 96% 56%; /* Gold Accent */
+    --accent-foreground: 222 47% 11%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 90% 30%;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%; /* Deepest Navy/Midnight */
+    --foreground: 210 40% 98%;
+    
+    --card: 222.2 84% 7%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 7%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 217.2 91.2% 59.8%; /* Bright Blue */
+    --primary-foreground: 222.2 47.4% 11.2%;
+    
+    --secondary: 175 75% 45%; /* Electric Teal */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 43 96% 62%; /* Electric Gold */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222.2 47.4% 11.2%;
+
+    --success: 142 72% 29%;
+    --success-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300 font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  @apply bg-card/60 backdrop-blur-md border border-border/50 shadow-lg;
+}
+
+.glass-panel-hover {
+  @apply hover:bg-card/85 transition-all duration-300 hover:border-primary/30 hover:shadow-primary/5;
+}
+
+/* Custom Scrollbar for sleek UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/35;
+}
+
+/* Glowing Neon Elements */
+.glow-teal {
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.15);
+}
+.glow-gold {
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.15);
+}
+.glow-red {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+/* Quick Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
