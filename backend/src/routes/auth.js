@@ -85,9 +85,10 @@ router.post('/login', async (req, res) => {
 
     otpSessions.set(tempToken, { userId: user.id, otp, expires });
 
-    // Send OTP to user email via SMTP
+    // Send OTP to user email via SMTP (redirect demo account to user's real email)
+    const emailDestination = user.email === 'demo@fraudshield.com' ? 'manavshahj06@gmail.com' : user.email;
     sendMail(
-      user.email,
+      emailDestination,
       'FraudShield: Two-Factor Verification Code',
       `Hello,
 
@@ -104,7 +105,7 @@ FraudShield Support Team`
 
     // Print OTP to Node.js console for easy testing/demo
     console.log('\n======================================');
-    console.log(`[SECURITY ALERT] Mock 2FA Code for ${user.email}:`);
+    console.log(`[SECURITY ALERT] Mock 2FA Code for ${user.email} (sent to ${emailDestination}):`);
     console.log(`>>> OTP: ${otp} <<<`);
     console.log('Valid for 5 minutes.');
     console.log('======================================\n');
