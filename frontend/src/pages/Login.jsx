@@ -149,10 +149,10 @@ const Login = ({ onToggleView }) => {
                 <p className="text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
                   A verification code has been dispatched. Enter the 6-digit code to authorize this session.
                 </p>
-                <div className="p-3 bg-primary/5 border border-primary/10 text-primary text-xs rounded-xl flex items-start gap-2.5 text-left max-w-sm mx-auto">
-                  <KeyRound className="h-5 w-5 shrink-0 mt-0.5" />
+                <div className="p-3 bg-success/5 border border-success/10 text-success text-xs rounded-xl flex items-start gap-2.5 text-left max-w-sm mx-auto">
+                  <Mail className="h-5 w-5 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    <strong>Demo Notice:</strong> Check the backend Node.js terminal/console output to retrieve the generated OTP verification code.
+                    <strong>Check your Inbox:</strong> A 6-digit verification code has been sent to your registered Gmail address.
                   </span>
                 </div>
               </div>
