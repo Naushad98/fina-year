@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 0 0% 99%; /* Crisp light gray-white */
+    --foreground: 0 0% 10%; /* Solid charcoal-black text */
     
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 0 0% 100%; /* Pure white panels */
+    --card-foreground: 0 0% 10%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 10%;
     
-    --primary: 215 90% 30%; /* Deep Blue */
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 0%; /* Solid black buttons & primary components */
+    --primary-foreground: 0 0% 100%;
     
-    --secondary: 175 75% 40%; /* Teal Accent */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 175 75% 35%; /* Professional deep teal accent */
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 210 40% 92%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 94%; /* Crisp light gray */
+    --muted-foreground: 0 0% 45%;
     
-    --accent: 43 96% 56%; /* Gold Accent */
-    --accent-foreground: 222 47% 11%;
+    --accent: 43 96% 45%;
+    --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     
     --warning: 38 92% 50%;
-    --warning-foreground: 210 40% 98%;
+    --warning-foreground: 0 0% 100%;
 
     --success: 142 76% 36%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 215 90% 30%;
+    --border: 0 0% 90%; /* Minimal light borders */
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
     
     --radius: 0.75rem;
   }
